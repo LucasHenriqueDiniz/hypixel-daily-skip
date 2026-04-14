@@ -1,0 +1,5 @@
+{
+  "extName": { "message": "Hypixel Daily Skip" },
+  "extDescription": { "message": "Skips the Hypixel daily reward video and auto-hovers reward cards." },
+  "actionTitle": { "message": "Hypixel Daily Skip" }
+}

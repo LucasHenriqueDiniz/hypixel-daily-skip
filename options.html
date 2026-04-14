@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="optionsTitle">Hypixel Daily Skip - Options</title>
+    <style>
+      :root {
+        --bg: #f4f8f4;
+        --card: #ffffff;
+        --text: #152117;
+        --muted: #5d6d60;
+        --accent: #19733d;
+        --border: #d8e6d9;
+      }
+      body {
+        margin: 0;
+        padding: 22px;
+        background: linear-gradient(180deg, #edf8f0 0%, var(--bg) 100%);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+      }
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px;
+      }
+      h1 {
+        margin-top: 0;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eef4ee;
+      }
+      .row:last-child {
+        border-bottom: 0;
+      }
+      .label {
+        font-weight: 600;
+      }
+      .desc {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 9px;
+      }
+      select {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      button {
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        cursor: pointer;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+      }
+      button.secondary {
+        background: #e4efe8;
+        color: #1f5a33;
+      }
+      #status {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      @media (max-width: 640px) {
+        body {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1 data-i18n="optionsHeader">Extension options</h1>
+
+        <div class="row">
+          <div>
+            <div class="label" data-i18n="enabled">Enable automation</div>
+            <div class="desc" data-i18n="enabledDesc">Master switch for all automations.</div>
+          </div>
+          <input id="enabled" type="checkbox" />
+        </div>
+
+        <div class="row">
+          <div>
+            <div class="label" data-i18n="autoSkip">Auto skip video</div>
+            <div class="desc" data-i18n="autoSkipDesc">Clicks skip button when available.</div>
+          </div>
+          <input id="autoSkip" type="checkbox" />
+        </div>
+
+        <div class="row">
+          <div>
+            <div class="label" data-i18n="autoHoverCards">Auto hover cards</div>
+            <div class="desc" data-i18n="autoHoverCardsDesc">Hovers each visible card after skip.</div>
+          </div>
+          <input id="autoHoverCards" type="checkbox" />
+        </div>
+
+        <div class="row">
+          <div>
+            <div class="label" data-i18n="language">Language</div>
+            <div class="desc" data-i18n="languageDesc">UI language for popup and options.</div>
+          </div>
+          <select id="language">
+            <option value="auto" data-i18n="languageAuto">Auto (browser)</option>
+            <option value="en" data-i18n="languageEn">English</option>
+            <option value="pt_BR" data-i18n="languagePtBr">Portuguese (BR)</option>
+            <option value="es" data-i18n="languageEs">Spanish</option>
+            <option value="fr" data-i18n="languageFr">French</option>
+            <option value="de" data-i18n="languageDe">German</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button id="save" data-i18n="save">Save</button>
+          <button id="reset" class="secondary" data-i18n="restoreDefaults">Restore defaults</button>
+        </div>
+
+        <div id="status"></div>
+      </div>
+    </div>
+    <script src="dist/options/options.js"></script>
+  </body>
+</html>

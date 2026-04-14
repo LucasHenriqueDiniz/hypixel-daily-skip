@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="popupTitle">Hypixel Daily Skip</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --card: #ffffff;
+        --text: #17202a;
+        --muted: #5f6b7a;
+        --accent: #1066d1;
+        --border: #d9e1ec;
+      }
+      body {
+        margin: 0;
+        min-width: 320px;
+        padding: 8px;
+        box-sizing: border-box;
+        background: radial-gradient(circle at top right, #e7f1ff 0%, var(--bg) 60%);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+      }
+      .wrap {
+        padding: 0;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        padding: 12px;
+        box-shadow: 0 8px 24px rgba(19, 44, 81, 0.12);
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 8px 0;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 42px;
+        height: 24px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        inset: 0;
+        background: #c8d3e3;
+        transition: 0.2s;
+        border-radius: 30px;
+      }
+      .slider:before {
+        content: "";
+        position: absolute;
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        top: 3px;
+        background: #fff;
+        transition: 0.2s;
+        border-radius: 50%;
+      }
+      .switch input:checked + .slider {
+        background: var(--accent);
+      }
+      .switch input:checked + .slider:before {
+        transform: translateX(18px);
+      }
+      .label {
+        font-size: 13px;
+      }
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .status {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .support {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid #bed7fb;
+        background: linear-gradient(135deg, #f5f9ff 0%, #deecff 100%);
+      }
+      .support-title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .support-desc {
+        margin: 6px 0 10px;
+        color: #2b4769;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .support-link {
+        display: inline-block;
+        text-decoration: none;
+        border-radius: 8px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+      .footer {
+        margin: 12px -12px -12px;
+        padding: 10px 12px;
+        border-top: 1px solid #e5ecf7;
+        background: #f8fbff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer-link {
+        color: #284a74;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .github-btn {
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        color: #fff;
+        background: #1d2733;
+        border-radius: 8px;
+        padding: 7px 10px;
+      }
+      select {
+        width: 150px;
+        padding: 5px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <div class="row">
+          <span class="label" data-i18n="enabled">Enable automation</span>
+          <label class="switch"><input id="enabled" type="checkbox" /><span class="slider"></span></label>
+        </div>
+        <div class="row">
+          <span class="label" data-i18n="autoSkip">Auto skip video</span>
+          <label class="switch"><input id="autoSkip" type="checkbox" /><span class="slider"></span></label>
+        </div>
+        <div class="row">
+          <span class="label" data-i18n="autoHoverCards">Auto hover cards</span>
+          <label class="switch"><input id="autoHoverCards" type="checkbox" /><span class="slider"></span></label>
+        </div>
+        <div class="row">
+          <span class="label" data-i18n="language">Language</span>
+          <select id="language">
+            <option value="auto" data-i18n="languageAuto">Auto (browser)</option>
+            <option value="en" data-i18n="languageEn">English</option>
+            <option value="pt_BR" data-i18n="languagePtBr">Portuguese (BR)</option>
+            <option value="es" data-i18n="languageEs">Spanish</option>
+            <option value="fr" data-i18n="languageFr">French</option>
+            <option value="de" data-i18n="languageDe">German</option>
+          </select>
+        </div>
+
+        <div class="support">
+          <p class="support-title" data-i18n="supportTitle">Make a donation</p>
+          <p class="support-desc" data-i18n="supportDesc">If this extension helps you, consider donating to keep updates coming.</p>
+          <a class="support-link" data-i18n="supportButton" href="https://lucashdo.com/support" target="_blank" rel="noreferrer">Donate</a>
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <div class="footer">
+          <a class="footer-link" href="https://github.com/LucasHenriqueDiniz" target="_blank" rel="noreferrer">LucasHenriqueDiniz</a>
+          <a class="github-btn" href="https://github.com/LucasHenriqueDiniz" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <script src="dist/popup/popup.js"></script>
+  </body>
+</html>

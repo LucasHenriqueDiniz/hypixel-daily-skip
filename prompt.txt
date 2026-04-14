@@ -1,0 +1,86 @@
+Quero que voce gere uma extensao Chrome Manifest V3 em TypeScript, com arquitetura base reutilizavel para automacoes em sites diferentes.
+
+Objetivo:
+- Criar uma base que eu possa reaproveitar para outros casos (pegar dados em site A, executar passos X/Y/Z em site B, etc).
+- Entregar estrutura pronta para escalar, com popup mini menu, options page, i18n e checagem de versao no GitHub Releases.
+
+Requisitos obrigatorios:
+1) Stack
+- Manifest V3
+- TypeScript
+- Build com esbuild
+- Sem framework frontend
+
+2) Estrutura de pastas
+- manifest.json
+- popup.html
+- options.html
+- src/background/service-worker.ts
+- src/content/main.ts
+- src/popup/popup.ts
+- src/options/options.ts
+- src/lib/storage.ts
+- src/lib/i18n.ts
+- src/lib/version-check.ts
+- src/lib/types.ts
+- _locales/en/messages.json
+- _locales/pt_BR/messages.json
+- scripts/build.mjs
+- README.md
+- CHANGELOG.md
+- .gitignore
+
+3) Popup (mini menu)
+- Toggle mestre: habilitar/desabilitar automacao
+- Toggles por funcionalidade
+- Botao "Executar agora" para disparar o content script na aba atual
+- Mostrar versao local da extensao
+- Botao "Verificar atualizacoes" (GitHub Releases)
+
+4) Options page
+- Mesmas opcoes do popup + configuracoes avancadas
+- Persistencia em chrome.storage.sync
+- Botao restaurar padroes
+
+5) i18n
+- Usar chrome.i18n.getMessage para labels da UI
+- Manifest usando __MSG_*__
+- Traducao inicial em en e pt_BR
+- Evitar strings hardcoded
+
+6) Version check
+- Ler versao local do manifest
+- Consultar API: /repos/{owner}/{repo}/releases/latest
+- Comparar semver (aceitar tag com ou sem "v")
+- Mostrar status: atualizado ou nova versao
+- Link para release quando houver update
+
+7) Qualidade
+- Codigo modular, claro e com logs padrao
+- Tratamento de erro para fetch/storage/mensageria de aba
+- Comentarios apenas quando realmente necessario
+
+8) Entrega
+- Gerar todos os arquivos completos
+- Incluir passos para teste local em chrome://extensions
+- Incluir comandos de primeiro publish no Git
+
+Contexto variavel por projeto:
+- Site(s) alvo:
+  - <COLOQUE_AQUI_OS_DOMINIOS>
+- Automacao desejada:
+  - <DESCREVA_REGRAS_1>
+  - <DESCREVA_REGRAS_2>
+  - <DESCREVA_REGRAS_3>
+
+Comportamento esperado do content script:
+- Deve ler settings antes de agir.
+- Deve reagir a mudancas dinamicas de DOM (MutationObserver quando fizer sentido).
+- Deve aceitar comando RUN_NOW vindo do popup.
+- Deve permitir ligar/desligar cada automacao por toggle.
+
+No final, me entregue:
+1. Arvore de arquivos criada
+2. Codigo completo de cada arquivo
+3. Passo a passo rapido de teste
+4. Comandos Git para publicar
