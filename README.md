@@ -31,10 +31,33 @@ npm run build
 - `npm run prepare:local` -> creates `load-unpacked/` ready for Chrome local load
 - `npm run package:zip` -> creates `release/hypixel-daily-skip-v<version>.zip` and `upload.zip`
 
+## Auto Release Build
+
+The workflow `.github/workflows/build-artifacts.yml` runs automatically on every push to `main`.
+
+It builds the extension and updates a GitHub prerelease named **Latest Local Unpacked Build** with:
+
+- `load-unpacked.zip`
+
+This file is ready for local installation in Chrome.
+
 ## Install Guides
 
 <details>
-  <summary><strong>Load Locally (Developer Mode)</strong></summary>
+  <summary><strong>Install from GitHub Releases (recommended)</strong></summary>
+
+1. Open the repository `Releases` page
+2. Download `load-unpacked.zip` from **Latest Local Unpacked Build**
+3. Extract the zip to any local folder
+4. Open `chrome://extensions`
+5. Enable `Developer mode`
+6. Click `Load unpacked`
+7. Select the extracted folder
+
+</details>
+
+<details>
+  <summary><strong>Build and install locally (manual)</strong></summary>
 
 1. Run:
 
