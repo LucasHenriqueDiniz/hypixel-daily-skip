@@ -72,34 +72,6 @@ npm run prepare:local
 
 </details>
 
-<details>
-  <summary><strong>Publish to Chrome Web Store</strong></summary>
-
-1. Bump `version` in `manifest.json` (for example `1.0.1`)
-2. Run:
-
-```bash
-npm run package:zip
-```
-
-3. Upload `upload.zip` to the Chrome Web Store dashboard
-4. Submit for review
-
-Chrome will auto-update users after approval and publish.
-
-</details>
-
-<details>
-  <summary><strong>Push to GitHub</strong></summary>
-
-```bash
-git add .
-git commit -m "chore: update docs and release tooling"
-git push
-```
-
-</details>
-
 ## Project Structure
 
 - `manifest.json`
