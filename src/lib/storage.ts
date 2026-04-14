@@ -4,7 +4,7 @@ export const DEFAULT_SETTINGS: Settings = {
   enabled: true,
   autoSkip: true,
   autoHoverCards: true,
-  language: "auto",
+  language: "en",
   repoOwner: "",
   repoName: ""
 };

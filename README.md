@@ -1,19 +1,83 @@
 # Hypixel Daily Skip
 
-Extensão Chrome (Manifest V3) feita para o Daily Reward do Hypixel.
+Chrome extension (Manifest V3) for the Hypixel daily reward flow.
 
-- Pula o vídeo automaticamente quando o botão `Skip` aparece
-- Faz hover automático nos cards para revelar a recompensa
-- Mini menu com switches para ativar/desativar cada automação
-- Idioma da interface configurável (`auto`, `pt-BR`, `en`, `es`, `fr`, `de`)
+- Auto-clicks the `Skip` button when available
+- Auto-hovers reward cards to reveal results
+- Simple popup toggles for each automation
+- UI language selector (`en`, `pt-BR`, `es`, `fr`, `de`, `auto`)
 
-## Preview rápido
+## Demo Video
 
-- Alvo: `https://rewards.hypixel.net/claim-reward/*`
-- Script só roda nessa rota
-- Configuração salva em `chrome.storage.sync`
+https://www.youtube.com/watch?v=THPDR4GgqZk
 
-## Estrutura
+## Target URL
+
+The extension runs only on:
+
+- `https://rewards.hypixel.net/claim-reward/*`
+
+## Quick Start
+
+```bash
+npm install
+npm run typecheck
+npm run build
+```
+
+## Commands
+
+- `npm run build` -> bundles scripts to `dist/`
+- `npm run prepare:local` -> creates `load-unpacked/` ready for Chrome local load
+- `npm run package:zip` -> creates `release/hypixel-daily-skip-v<version>.zip` and `upload.zip`
+
+## Install Guides
+
+<details>
+  <summary><strong>Load Locally (Developer Mode)</strong></summary>
+
+1. Run:
+
+```bash
+npm run prepare:local
+```
+
+2. Open `chrome://extensions`
+3. Enable `Developer mode`
+4. Click `Load unpacked`
+5. Select the `load-unpacked/` folder
+
+</details>
+
+<details>
+  <summary><strong>Publish to Chrome Web Store</strong></summary>
+
+1. Bump `version` in `manifest.json` (for example `1.0.1`)
+2. Run:
+
+```bash
+npm run package:zip
+```
+
+3. Upload `upload.zip` to the Chrome Web Store dashboard
+4. Submit for review
+
+Chrome will auto-update users after approval and publish.
+
+</details>
+
+<details>
+  <summary><strong>Push to GitHub</strong></summary>
+
+```bash
+git add .
+git commit -m "chore: update docs and release tooling"
+git push
+```
+
+</details>
+
+## Project Structure
 
 - `manifest.json`
 - `popup.html`
@@ -24,48 +88,5 @@ Extensão Chrome (Manifest V3) feita para o Daily Reward do Hypixel.
 - `src/lib/*`
 - `_locales/*`
 - `assets/icons/*`
-
-## Desenvolvimento local
-
-```bash
-npm install
-npm run build
-```
-
-## Testar no Chrome
-
-1. Abra `chrome://extensions`
-2. Ative `Developer mode`
-3. Clique em `Load unpacked`
-4. Selecione a pasta do projeto
-
-## Publicar na Chrome Web Store
-
-1. Aumente a versão em `manifest.json` (ex: `1.0.1`)
-2. Gere build: `npm run build`
-3. Faça ZIP do projeto (sem `node_modules`)
-4. Envie no painel da Chrome Web Store
-
-### Atualizações
-
-Quando você publica uma nova versão na Store, o Chrome atualiza automaticamente para os usuários (não precisa botão de "check update" dentro da extensão).
-
-## Git (primeiro publish)
-
-```bash
-git init
-git add .
-git commit -m "feat: initial hypixel daily skip extension"
-git branch -M main
-git remote add origin <URL_DO_REPO>
-git push -u origin main
-```
-
-## Ícones
-
-Os ícones estão em `assets/icons/`:
-
-- `icon16.png`
-- `icon32.png`
-- `icon48.png`
-- `icon128.png`
+- `scripts/prepare-local.ps1`
+- `scripts/package-release.ps1`

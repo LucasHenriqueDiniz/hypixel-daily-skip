@@ -5,7 +5,9 @@
   "description": "Chrome extension base in TypeScript with i18n, popup/options, and Hypixel automation.",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare:local": "powershell -ExecutionPolicy Bypass -File scripts/prepare-local.ps1",
+    "package:zip": "powershell -ExecutionPolicy Bypass -File scripts/package-release.ps1"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.293",

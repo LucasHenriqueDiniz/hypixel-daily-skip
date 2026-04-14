@@ -3,3 +3,6 @@ dist/
 *.log
 *.tmp
 *.zip
+release/
+.release/
+load-unpacked/
